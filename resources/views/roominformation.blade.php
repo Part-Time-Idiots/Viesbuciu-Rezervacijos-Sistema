@@ -19,7 +19,7 @@
 </style>
 </head>
     <body class="antialiased">
-    @if (Route::has('login'))
+    <!--@if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
@@ -31,7 +31,7 @@
                         @endif
                     @endif
                 </div>
-            @endif
+            @endif-->
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="ml-12">
                     <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
