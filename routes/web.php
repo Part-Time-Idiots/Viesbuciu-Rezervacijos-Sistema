@@ -100,6 +100,10 @@ Route::get('/editreservation', function () {
     return view('editreservation');
 });
 
+Route::get('/roominformation', function () {
+    return view('roominformation');
+});
+
 Route::post('search','App\Http\Controllers\Reservations@search');
 
 
