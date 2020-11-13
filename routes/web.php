@@ -37,7 +37,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-//Vartotoju posistemei
+
+
+
+
+
+
+
+
+
+
+//Vartotoju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 100 EILUTES !!!!!!!!!!!!!
 
 
 
@@ -87,7 +97,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-//Rezervaciju posistemei
+//Rezervaciju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 150 EILUTES !!!!!!!!!!!!!
 Route::get('/clientreservations', function () {
     return view('clientreservations');
 });
@@ -137,21 +147,7 @@ Route::post('search','App\Http\Controllers\Reservations@search');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Atsiliepimu posistemei
+//Atsiliepimu posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 200 EILUTES !!!!!!!!!!!!!
 
 
 
