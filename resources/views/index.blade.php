@@ -8,7 +8,7 @@
                 <div class="card-header">Pagrindinis puslapis</div>
 
                 <div class="card-body">
-                    xoxo 
+                    xoxo
                 </div>
             </div>
         </div>

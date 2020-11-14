@@ -39,18 +39,27 @@
                       
                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('user.profile', Auth::user()->id) }}">
-                            {{ __('Profilis') }}
+                            {{ __('Paskyra') }}
                         </a>
 
-                          <a class="dropdown-item" href="{{ route('logout') }}"
-                             onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
-                          </a>
+                        <a class="dropdown-item" href="{{ route('user.edit') }}">
+                            {{ __('Redaguoti paskyrą') }}
+                        </a>
 
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                              @csrf
-                          </form>
+                        <a class="dropdown-item" href="{{ route('user.reservations') }}">
+                            {{ __('Peržiūrėti mano rezervacijas') }}
+                        </a>
+                        
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Atsijungti') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                         
                       </div>
                   </li>
               @endguest

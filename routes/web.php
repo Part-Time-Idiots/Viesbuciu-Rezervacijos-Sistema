@@ -59,14 +59,11 @@ Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/user/{id}', [UserController::class, 'profile'])->name('user.profile');
+Route::get('/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
+Route::get('/edit/user', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/edit/user', [UserController::class, 'update'])->name('user.update');
 
-
-
-
-
-
-
+Route::get('/user/reservations', [UserController::class, 'reservations'])->name('user.reservations');
 
 
 
