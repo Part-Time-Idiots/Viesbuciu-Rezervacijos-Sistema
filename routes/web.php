@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +23,13 @@ Route::get('/main', function () {
     return view('main');
 });
 
-Route::get('/user', 'UserController@user');
-Route::get('/user', 'UserController@user');
 
-
-Auth::routes();
 
 Route::post('search','App\Http\Controllers\Reservations@search');
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+
+
+
 
 
 
@@ -51,14 +51,15 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 
 //Vartotoju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 100 EILUTES !!!!!!!!!!!!!
 
+ 
+//Route::get('/profile', 'UserController@profile');
 
 
+Auth::routes();
 
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
-
-
-
-
+Route::get('/user/{id}', [UserController::class, 'profile'])->name('user.profile');
 
 
 
