@@ -14,20 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/main', function () {
     return view('main');
 });
 
+Route::get('/user', 'UserController@user');
+Route::get('/user', 'UserController@user');
 
 
 Auth::routes();
 
 Route::post('search','App\Http\Controllers\Reservations@search');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 
 
 
