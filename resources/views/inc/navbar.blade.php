@@ -12,8 +12,11 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="/">Pagrindinis</a></li>
             <li class="nav-item"><a class="nav-link" href="/clientreservations">Rezervacijos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/m_reservations">(Admin)</a></li>
             <li class="nav-item"><a class="nav-link" href="/findreservation">Rezervacijų paieška</a></li>
+            <li class="nav-item"><a class="nav-link" href="/findhotel">Viešbučių paieška</a></li>
             <li class="nav-item"><a class="nav-link" href="/hotels">Viešbučiai</a></li>
+            <li class="nav-item"><a class="nav-link" href="/reports">Ataskaitos</a></li>
             <li class="nav-item"><a class="nav-link" href="/responses">Atsiliepimai</a></li>
           </ul>
 
