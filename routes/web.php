@@ -148,13 +148,24 @@ Route::post('search','App\Http\Controllers\Reservations@search');
 
 
 //Atsiliepimu posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 200 EILUTES !!!!!!!!!!!!!
-
-
-
-
-
-
-
+Route::get('/review', function () {
+    return view('review');
+});
+Route::get('/hotelReview', function () {
+    return view('hotelReview');
+});
+Route::get('/usersReviews', function () {
+    return view('usersReviews');
+});
+Route::get('/editReview', function () {
+    return view('editReview');
+});
+Route::get('/commentReply', function () {
+    return view('commentReply');
+});
+Route::get('/addReview', function () {
+    return view('addReview');
+});
 
 
 
