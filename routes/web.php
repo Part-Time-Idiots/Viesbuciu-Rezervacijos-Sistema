@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,16 +58,15 @@ Route::post('search','App\Http\Controllers\Reservations@search');
 
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+//Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.profile');
+Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
-Route::get('/edit/user', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/edit/user', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/edit', [UserController::class, 'update'])->name('user.update');
 
 Route::get('/user/reservations', [UserController::class, 'reservations'])->name('user.reservations');
-
-
-
 
 
 

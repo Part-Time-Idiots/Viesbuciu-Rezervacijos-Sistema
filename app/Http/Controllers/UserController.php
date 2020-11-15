@@ -9,6 +9,16 @@ use Validator;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:user|superadministrator');
+    }
+    
+    public function index() 
+    {
+        return view('user.index');
+    }
+
     public function edit()
     {
         if (Auth::user()) {
