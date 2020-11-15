@@ -198,3 +198,47 @@ Route::post('search','App\Http\Controllers\Reservations@search');
 
 
 //Viesbuciu posistemei
+Route::get('/hotels', function () {
+    return view('hotel/hotels');
+});
+Route::get('/edithotel', function () {
+    return view('hotel/edit');
+});
+Route::get('/removehotel', function () {
+    return view('hotel/remove');
+});
+Route::get('/createhotel', function () {
+    return view('hotel/create');
+});
+Route::get('/viewhotel', function () {
+    return view('hotel/view');
+});
+Route::get('/findhotel', function () {
+    return view('hotel/find');
+});
+
+Route::get('/reports', function () {
+    return view('report/reports');
+});
+Route::get('/createreport', function () {
+    return view('report/create');
+});
+Route::get('/viewreport', function () {
+    return view('report/view');
+});
+
+Route::get('/m_reservations', function () {
+    return view('managerReservations/manreservations');
+});
+Route::get('/m_viewres', function () {
+    return view('managerReservations/view');
+});
+Route::get('/m_createres', function () {
+    return view('managerReservations/create');
+});
+Route::get('/m_editres', function () {
+    return view('managerReservations/edit');
+});
+Route::get('/m_removeres', function () {
+    return view('managerReservations/remove');
+});
