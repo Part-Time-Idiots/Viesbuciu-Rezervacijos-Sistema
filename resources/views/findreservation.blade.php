@@ -37,7 +37,7 @@
                     <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
                     Ieškoti kambarių
                     </div>
-                    <p><a href="{{ url('/main') }}" class="text-sm text-gray-700 underline">Atgal</a>
+                    <p><a href="{{ url('/') }}" class="text-sm text-gray-700 underline">Atgal</a>
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
