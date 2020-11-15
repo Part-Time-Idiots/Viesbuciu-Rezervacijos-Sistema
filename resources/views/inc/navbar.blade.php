@@ -12,8 +12,12 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="/">Pagrindinis</a></li>
             <li class="nav-item"><a class="nav-link" href="/clientreservations">Rezervacijos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/m_reservations">(Admin)</a></li>
+            <li class="nav-item"><a class="nav-link" href="/findreservation">Rezervacijų paieška</a></li>
+            <li class="nav-item"><a class="nav-link" href="/findhotel">Viešbučių paieška</a></li>
             <li class="nav-item"><a class="nav-link" href="/hotels">Viešbučiai</a></li>
             <li class="nav-item"><a class="nav-link" href="/review">Atsiliepimai</a></li>
+            <li class="nav-item"><a class="nav-link" href="/reports">Ataskaitos</a></li>
           </ul>
 
           <!-- Right Side Of Navbar -->
@@ -22,13 +26,13 @@
               @guest
                   @if (Route::has('login'))
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                          <a class="nav-link" href="{{ route('login') }}">{{ __('Prisijungti') }}</a>
                       </li>
                   @endif
                   
                   @if (Route::has('register'))
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                          <a class="nav-link" href="{{ route('register') }}">{{ __('Registruotis') }}</a>
                       </li>
                   @endif
               @else

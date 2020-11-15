@@ -15,44 +15,44 @@
                 </div>
             @endif-->
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="ml-12">
-                    <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
-                    Kambario informacija
-                    </div>
-                </div>
-                <div class="ml-12">
-                    <div class="mt-2 text-gray-700 dark:text-gray-400 text-sm" style="color:black;font-size:15px;">
-                    Aprasyta kambario informacija...
-                    </div>
-                </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                 
                         <div class="p-6">
                         <div class="p-6 right-0">
                             <div class="pabel-heading">
-                                <h2 class="text-center">Rezervacijos forma</h2>
+                                <h2 class="text-center">Ataskaitos generavimo forma</h2>
                             </div>
                             <div class="panel-body">
                             <form action="search" method="POST">
                                 @csrf
+
                                 <div class="col-md-3">
-                                Miestas:<br>
-                                    <input type="text" name="town" placeholder="Miestas">
+                                Viešbutis:<br>
+                                    <input type="text" name="hotelname" list="hotels">
+
+                                    <datalist id="hotels">
+                                    <option value="Viešbutis 1">
+                                    <option value="Viešbutis 2">
+                                    <option value="Viešbutis 3">
+                                    </datalist>
                                     <br>
                                 </div>
+
                                 <div class="col-md-3">
                                     Nuo:<br>
                                     <input type="date" name="datefrom">
                                     <br>
                                 </div>
+
                                 <div class="col-md-3">
                                     Iki:<br>
                                     <input type="date" name="dateto">
                                     <br><br>
                                 </div>
+                                
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary rounded" type="submit">Rezervuoti</button>
+                                    <button class="btn btn-primary rounded" type="submit">Pridėti</button>
                                 </div>   
                             </form> 
                         </div> 
