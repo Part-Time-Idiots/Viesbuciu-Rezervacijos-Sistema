@@ -64,10 +64,10 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/edit', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/delete', [UserController::class, 'deleteUser'])->name('user.delete');
 
 Route::get('/user/reservations', [UserController::class, 'reservations'])->name('user.reservations');
-
 
 
 
