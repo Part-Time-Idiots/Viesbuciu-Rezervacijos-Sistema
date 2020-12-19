@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HotelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -209,25 +210,18 @@ Route::get('/addReview', function () {
 
 
 //Viesbuciu posistemei
-Route::get('/hotels', function () {
-    return view('hotel/hotels');
-});
-Route::get('/edithotel', function () {
-    return view('hotel/edit');
-});
-Route::get('/removehotel', function () {
-    return view('hotel/remove');
-});
+Route::get('/hotels', [HotelController::class, 'index']);
+Route::get('/viewhotel/{id}', [HotelController::class, 'view']);
+Route::get('/edithotel', [HotelController::class, 'edit']);
+Route::get('/removehotel', [HotelController::class, 'remove']);
+
 Route::get('/createhotel', function () {
     return view('hotel/create');
 });
-Route::get('/viewhotel', function () {
-    return view('hotel/view');
-});
+
 Route::get('/findhotel', function () {
     return view('hotel/find');
 });
-
 Route::get('/reports', function () {
     return view('report/reports');
 });
