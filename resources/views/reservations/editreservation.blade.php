@@ -22,18 +22,71 @@
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                
+                    @isset($message)
+                    <?php echo $message; $message = "";?>
+                    @endisset
                         <div class="p-6">
                         <?php
                             echo " Rezervacijos informacija";
-                        ?>
-                            <!--<div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-                            -->
-                            <p><a href="{{ url('/editreservation') }}" class="text-sm text-gray-700 underline">Redaguoti</a></p>
-                               
+                        ?> @foreach ($reservations as $reservation)
+                            <form action="updatereservation" method="POST">
+                                @csrf
+
+                                <div class="col-md-3">
+                                Rezervacijos pradžia:<br>
+                                    <input type="date" min="2020-01-01" max="2030-01-01" placeholder="2020-01-01" name="reservationstart" value="{{$reservation->reservationstart}}">
+                                    <br>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                Rezervacijos pabaiga:<br>
+                                    <input type="date" min="2020-01-01" max="2031-01-01" placeholder="2020-01-14" name="reservationend" value="{{$reservation->reservationend}}">
+                                    <br>
+                                </div>
+                                <input type="hidden" name="reservationid" value="{{$reservation->id}}">
+                                <input type="hidden" name="roomid" value="{{$reservation->room_id}}">
+                                <input type="hidden" name="userid" value="{{$reservation->user_id}}">
+                                <div class="col-md-3">
+                                Suaugusiųjų skaičius:<br>
+                                    <input type="number" min="1" max="2" placeholder="1" name="adultcount" value="{{$reservation->adultcount}}">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Vaikų skaičius:<br>
+                                    <input type="number" min="0" max="2" placeholder="0" name="childcount" value="{{$reservation->childcount}}">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Pageidavimai:<br>
+                                    <input type="text" name="preferences" placeholder="Nėra" value="{{$reservation->preferences}}">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Įskaičiuoti pusryčiai:<br>
+                                    <input type="checkbox" name="breakfast">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Vieta mašinai:<br>
+                                    <input type="checkbox" name="carplace" >
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Išanksto apmokėta:<br>
+                                    <input type="checkbox" name="prepayment">
+                                    <br><br>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary rounded" type="submit">Redaguoti</button>
+                                </div>   
+                            </form> 
+                            @endforeach
                         </div>
                     </div>
                 </div>

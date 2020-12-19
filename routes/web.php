@@ -98,36 +98,36 @@ Route::get('/user/reservations', [UserController::class, 'reservations'])->name(
 
 
 //Rezervaciju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 150 EILUTES !!!!!!!!!!!!!
-Route::get('/clientreservations', function () {
-    return view('reservations/clientreservations');
-});
-
+//Route::get('/clientreservations', function () {
+ //   return view('reservations/clientreservations');
+//});
+Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations');
 Route::get('/findreservation', function () {
     return view('reservations/findreservation');
 });
+//editreservation
+Route::post('editreservation','App\Http\Controllers\ReservationsController@editReservation');
+//retrieve data
+Route::get('view-editedreservation','ReservationsController@editReservation');
 
-Route::get('/editreservation', function () {
-    return view('reservations/editreservation');
-});
+//delete reservation
+Route::post('deletereservation','App\Http\Controllers\ReservationsController@deleteReservation');
+//retrieve data
+Route::get('view-newreservations','ReservationsController@deleteReservation');
 
-Route::get('/roominformation', function () {
-    return view('roominformation');
-});
+//update reservation
+Route::post('updatereservation', 'App\Http\Controllers\ReservationsController@updateReservation');
+Route::get('reservation-newresults','ReservationsController@updateReservation');
+
+Route::post('roominformation', 'App\Http\Controllers\ReservationsController@roomData');
+Route::get('room-results','ReservationsController@roomData');
+
+Route::post('createrezervation', 'App\Http\Controllers\ReservationsController@createreservation');
+Route::get('reservation-results','ReservationsController@createreservation');
 
 Route::post('search','App\Http\Controllers\ReservationsController@search');
 //retrieve data for searching reservations
 Route::get('view-results','ReservationsController@search');
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -166,17 +166,6 @@ Route::get('/commentReply', function () {
 Route::get('/addReview', function () {
     return view('addReview');
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
