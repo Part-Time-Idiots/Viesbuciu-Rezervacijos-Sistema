@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViezbuciaiTable extends Migration
+class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateViezbuciaiTable extends Migration
      */
     public function up()
     {
-        Schema::create('viezbuciai', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('country');
+            $table->string('city');
+            $table->string('street');
+            $table->integer('number');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateViezbuciaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('viezbuciai');
+        Schema::dropIfExists('addresses');
     }
 }
