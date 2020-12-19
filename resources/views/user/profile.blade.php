@@ -33,9 +33,12 @@
 				<div class="card-header">{{ __('Paskyros šalinimas') }}</div>
 				<div class="card-body">
 					<p class="card-text">Pašalinę paskyrą prarasite visus duomenis.</p>
-				<a href="#" class="btn btn-danger">Pašalinti paskyrą</a>
-				</div>
-            
+					<form method="POST" action="{{ route('user.delete') }}">
+						<button type="submit" class="btn btn-danger">
+							{{ __('Pašalinti paskyrą') }}
+						</button>
+					</form>
+				</div>    
         	</div>
       </div>
   </div>
