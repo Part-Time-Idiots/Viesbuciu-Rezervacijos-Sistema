@@ -16,6 +16,8 @@ class CreateHotelAdministratorsTable extends Migration
         Schema::create('hotel_administrators', function (Blueprint $table) {
             $table->id();
             $table->string('tabnumber');
+            $table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

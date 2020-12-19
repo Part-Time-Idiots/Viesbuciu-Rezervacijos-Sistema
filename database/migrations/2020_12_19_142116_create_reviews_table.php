@@ -20,6 +20,12 @@ class CreateReviewsTable extends Migration
             $table->string('hotelcomment');
             $table->datetime('createdate');
             $table->datetime('responsedate');
+            $table->unsignedBigInteger('hotel_id');
+            //$table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('hoteladmin_id');
+            //$table->foreign('hoteladmin_id')->references('id')->on('hotel_administrators');
             $table->timestamps();
         });
     }

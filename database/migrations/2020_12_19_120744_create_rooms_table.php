@@ -20,6 +20,8 @@ class CreateRoomsTable extends Migration
             $table->integer('floor');
             $table->integer('maxclient');
             $table->string('perks');
+            $table->unsignedBigInteger('hotel_id');
+            //$table->foreign('hotel_id')->references('id')->on('hotels');
             $table->timestamps();
         });
     }

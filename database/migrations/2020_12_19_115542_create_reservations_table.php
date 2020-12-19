@@ -25,6 +25,12 @@ class CreateReservationsTable extends Migration
             $table->string('preferences');
             $table->boolean('carplace');
             $table->boolean('prepayment');
+
+            $table->unsignedBigInteger('user_id');
+           // $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('room_id');
+          //  $table->foreign('room_id')->references('id')->on('rooms');
+
             $table->timestamps();
         });
     }
