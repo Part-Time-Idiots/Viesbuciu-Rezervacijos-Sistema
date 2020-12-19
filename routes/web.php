@@ -212,12 +212,12 @@ Route::get('/addReview', function () {
 //Viesbuciu posistemei
 Route::get('/hotels', [HotelController::class, 'index']);
 Route::get('/viewhotel/{id}', [HotelController::class, 'view']);
-Route::get('/edithotel', [HotelController::class, 'edit']);
-Route::get('/removehotel', [HotelController::class, 'remove']);
-
-Route::get('/createhotel', function () {
-    return view('hotel/create');
-});
+Route::get('/edithotel/{id}', [HotelController::class, 'edit']);
+Route::get('/removehotel/{id}', [HotelController::class, 'remove']);
+Route::get('/hotelconfirmdel/{id}', [HotelController::class, 'askConfirm']);
+Route::get('/hotelconfirmcancel', [HotelController::class, 'confirmCancel']);
+Route::get('/createhotel', [HotelController::class, 'creationForm']);
+Route::post('/createhotel', [HotelController::class, 'create']);
 
 Route::get('/findhotel', function () {
     return view('hotel/find');

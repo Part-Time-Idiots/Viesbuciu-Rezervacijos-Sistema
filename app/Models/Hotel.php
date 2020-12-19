@@ -16,17 +16,13 @@ class Hotel extends Model
         'web',
         'communication',
         'animals',
-        'agerestriction'
+        'agerestriction',
+        'created_at',
+        'updated_at'
     ];
 
     protected $attributes = [
-        'adress_id' => NULL,
-        'user_id' => NULL
+        'address_id' => 0,
+        'rating' => 0,
     ];
-
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated' => 'datetime'
-    ];
-
 }

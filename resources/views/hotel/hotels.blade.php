@@ -15,41 +15,43 @@
                     @endif
                 </div>
             @endif-->
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="ml-12">
-                    <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
-                         Viešbučių sąrašas
+            <center>
+                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                    <div class="ml-12">
+                        <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
+                            Viešbučių sąrašas
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                            <a href="{{ url('/createhotel') }}" class="btn btn-primary rounded" type="submit">Registruoti naują</a>
+                    </div><p></p>
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                            <table border="3px solid black">
+                            <tr>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>Pavadinimas</td>
+                                        <td>Aprašymas</td>
+                                        <td>Vertinimas</td>
+                                    </tr>
+                            </tr>
+                            @foreach ($hotels as $hotel)
+                                <tr>
+                                    <tr>
+                                    <td>{{ $hotel->id }}</td>
+                                    <td>{{ $hotel->name }}</td>
+                                    <td>{{ $hotel->description }}</td>
+                                    <td>{{ $hotel->rating}}</td>
+                                    <td><a href="{{ url('/viewhotel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Pilna informacija</a></td>
+                                    <td><a href="{{ url('/edithotel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Redaguoti</a></td>
+                                    <td><a href="{{ url('/hotelconfirmdel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Pašalinti</a></td>
+                                    </tr>
+                                </tr>
+                                @endforeach
+                            </table>
+                            
                     </div>
                 </div>
-                <div class="col-md-3">
-                        <a href="{{ url('/createhotel') }}" class="btn btn-primary rounded" type="submit">Registruoti naują</a>
-                </div><p></p>
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                        <table border="3px solid black">
-                        <tr>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Pavadinimas</td>
-                                    <td>Aprašymas</td>
-                                    <td>Vertinimas</td>
-                                </tr>
-                        </tr>
-                        @foreach ($hotels as $hotel)
-                            <tr>
-                                <tr>
-                                <td>{{ $hotel->id }}</td>
-                                <td>{{ $hotel->name }}</td>
-                                <td>{{ $hotel->description }}</td>
-                                <td>{{ $hotel->rating}}</td>
-                                <td><a href="{{ url('/viewhotel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Pilna informacija</a></td>
-                                <td><a href="{{ url('/edithotel') }}" class="text-sm text-gray-700 underline">Redaguoti</a></td>
-                                <td><a href="{{ url('/removehotel') }}" class="text-sm text-gray-700 underline">Pašalinti</a></td>
-                                </tr>
-                            </tr>
-                            @endforeach
-                        </table>
-                        
-                </div>
-            </div>
+            </center>
         </div>   
 @endsection
