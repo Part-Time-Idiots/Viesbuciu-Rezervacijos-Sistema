@@ -19,6 +19,8 @@ class CreateReportsTable extends Migration
             $table->date('datefrom');
             $table->date('dateto');
             $table->string('text');
+            $table->unsignedBigInteger('hotel_id');
+            //$table->foreign('hotel_id')->references('id')->on('hotels');
             $table->timestamps();
         });
     }

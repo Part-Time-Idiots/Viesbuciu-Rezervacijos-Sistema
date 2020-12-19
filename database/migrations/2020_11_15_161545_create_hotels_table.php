@@ -22,6 +22,10 @@ class CreateHotelsTable extends Migration
             $table->double('rating');
             $table->boolean('animals');
             $table->integer('agerestriction');
+            $table->unsignedBigInteger('address_id');
+            //$table->foreign('address_id')->references('id')->on('addresses');
+            $table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

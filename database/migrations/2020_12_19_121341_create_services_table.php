@@ -19,6 +19,8 @@ class CreateServicesTable extends Migration
             $table->string('description');
             $table->double('price');
             $table->date('date');
+            $table->unsignedBigInteger('reservation_id');
+            //$table->foreign('reservation_id')->references('id')->on('reservations');
             $table->timestamps();
         });
     }
