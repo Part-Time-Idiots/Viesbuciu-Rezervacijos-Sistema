@@ -22,7 +22,14 @@
                 </div>
                 <div class="ml-12">
                     <div class="mt-2 text-gray-700 dark:text-gray-400 text-sm" style="color:black;font-size:15px;">
-                    Aprasyta kambario informacija...
+                    @isset($rooms)
+                    @foreach ($rooms as $room)
+                    Viešbutis: {{ $room->hotel }}<br> Aukštas: {{ $room->floor }}<br> Kambario privalumai: {{ $room->perks }}<br>
+                    @endforeach
+                    @endisset
+                    @isset($message)
+                    <?php echo $message; ?>
+                    @endisset
                     </div>
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
@@ -34,25 +41,75 @@
                                 <h2 class="text-center">Rezervacijos forma</h2>
                             </div>
                             <div class="panel-body">
-                            <form action="search" method="POST">
+                            <form action="createrezervation" method="POST">
                                 @csrf
+                                
+                                <!--<div class="col-md-3">
+                                Pateikimo data:<br>
+                                    <input type="date" min="2020-01-01" max="2021-01-01" placeholder="2020-01-01" name="rezervacijos pateikimo data">
+                                    <br>
+                                </div>-->
+
                                 <div class="col-md-3">
-                                Miestas:<br>
-                                    <input type="text" name="town" placeholder="Miestas">
+                                Rezervacijos pradžia:<br>
+                                    <input type="date" min="2020-01-01" max="2030-01-01" placeholder="2020-01-01" name="reservationstart">
                                     <br>
                                 </div>
+                                
                                 <div class="col-md-3">
-                                    Nuo:<br>
-                                    <input type="date" name="datefrom">
+                                Rezervacijos pabaiga:<br>
+                                    <input type="date" min="2020-01-01" max="2031-01-01" placeholder="2020-01-14" name="reservationend">
                                     <br>
                                 </div>
+                                @isset($rooms)
+                                @foreach ($rooms as $room)
+                                <input type="hidden" name="roomid" value="{{$room->id}}">
+                                @endforeach
+                                @endisset
+                                <!--<div class="col-md-3">
+                                Statusas:<br>
+                                    <input type="text" name="statusas">
+                                    <br><br>
+                                </div>-->
+
                                 <div class="col-md-3">
-                                    Iki:<br>
-                                    <input type="date" name="dateto">
+                                Suaugusiųjų skaičius:<br>
+                                    <input type="number" min="1" max="2" placeholder="1" name="adultcount">
                                     <br><br>
                                 </div>
+
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary rounded" type="submit">Rezervuoti</button>
+                                Vaikų skaičius:<br>
+                                    <input type="number" min="0" max="2" placeholder="0" name="childcount">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Pageidavimai:<br>
+                                    <input type="text" name="preferences" placeholder="Nėra">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Įskaičiuoti pusryčiai:<br>
+                                    <input type="checkbox" name="breakfast">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Vieta mašinai:<br>
+                                    <input type="checkbox" name="carplace">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Išanksto apmokėta:<br>
+                                    <input type="checkbox" name="prepayment">
+                                    <br><br>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary rounded" type="submit">Patvirtinti</button>
                                 </div>   
                             </form> 
                         </div> 
