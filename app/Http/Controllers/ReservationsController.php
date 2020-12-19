@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Reservations extends Controller
+class ReservationsController extends Controller
 {
     //
     function search(Request $req){
@@ -16,6 +16,7 @@ class Reservations extends Controller
         print_r($search_from);
         print_r($search_to);
 
+        //$rooms = Product::where
 
         //redirect()->back();
     }

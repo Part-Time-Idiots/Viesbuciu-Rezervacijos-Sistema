@@ -114,7 +114,7 @@ Route::get('/roominformation', function () {
     return view('roominformation');
 });
 
-Route::post('search','App\Http\Controllers\Reservations@search');
+Route::post('search','App\Http\Controllers\ReservationsController@search');
 
 
 
