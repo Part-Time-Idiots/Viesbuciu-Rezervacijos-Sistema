@@ -37,7 +37,7 @@
                                     <input type="text" name="town" placeholder="Miestas">
                                     <br>
                                 </div>
-                                <div class="col-md-3">
+                                <!--<div class="col-md-3">
                                     Nuo:<br>
                                     <input type="date" name="datefrom">
                                     <br>
@@ -46,8 +46,9 @@
                                     Iki:<br>
                                     <input type="date" name="dateto">
                                     <br><br>
-                                </div>
+                                </div>-->
                                 <div class="col-md-3">
+                                <br>
                                     <button class="btn btn-primary rounded" type="submit">Ieškoti</button>
                                 </div>   
                             </form> 
@@ -56,20 +57,30 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2">
-                        <center><table border = "1">
+                        @isset($rooms)
+                        <center><table border = "1">  
+                         <tr>
+                        <td>Viešbutis</td>
+                        <td>Maksimalus žmonių kiekis</td>
+                        </tr>
+                       
                         @foreach ($rooms as $room)
                         <tr>
-                        <tr>
-                        <td>{{ $room->id }}</td>
                         <td>{{ $room->hotel }}</td>
-                        <td>{{ $room->roomnumber }}</td>
-                        <td>{{ $room->floor}}</td>
-                        <td>{{ $room->perks}}</td>
-                        <td><a href="{{ url('/roominformation') }}" class="text-sm text-gray-700 underline">Pasirinkti kambarį</a></td>
+                        <td>{{ $room->maxclient}}</td>
+                        <td> 
+                            <form action="roominformation" method="post">
+                                @csrf
+                                <input type="hidden" name="roomid" value="{{$room->id}}">
+                                <input type="submit" value="Pasirinkti">
+                            </form>
+                        </td>
                         </tr>
                         @endforeach
+                        
                         </table>
                         </center>
+                        @endisset
                     </div>
             </div>
         </div>
