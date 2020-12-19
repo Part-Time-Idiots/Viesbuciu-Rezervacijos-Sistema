@@ -99,15 +99,15 @@ Route::get('/user/reservations', [UserController::class, 'reservations'])->name(
 
 //Rezervaciju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 150 EILUTES !!!!!!!!!!!!!
 Route::get('/clientreservations', function () {
-    return view('clientreservations');
+    return view('reservations/clientreservations');
 });
 
 Route::get('/findreservation', function () {
-    return view('findreservation');
+    return view('reservations/findreservation');
 });
 
 Route::get('/editreservation', function () {
-    return view('editreservation');
+    return view('reservations/editreservation');
 });
 
 Route::get('/roominformation', function () {
