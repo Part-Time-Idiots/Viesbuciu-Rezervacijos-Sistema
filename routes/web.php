@@ -26,7 +26,7 @@ Route::get('/main', function () {
 
 
 
-Route::post('search','App\Http\Controllers\Reservations@search');
+
 
 
 
@@ -115,8 +115,8 @@ Route::get('/roominformation', function () {
 });
 
 Route::post('search','App\Http\Controllers\ReservationsController@search');
-
-
+//retrieve data for searching reservations
+Route::get('view-results','ReservationsController@search');
 
 
 
