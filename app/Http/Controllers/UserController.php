@@ -54,7 +54,10 @@ class UserController extends Controller
             
             if($validate) {
                 $user->name = $request['name'];
+                $user->surname = $request['surname'];
                 $user->email = $request['email'];
+                $user->birthday = $request['birthday'];
+                $user->personal_code = $request['personal_code'];
                 $user->save();
                 $request->session()->flash('success', 'Pakeitimai buvo sėkmingai išsaugoti');
                 return redirect()->back();
