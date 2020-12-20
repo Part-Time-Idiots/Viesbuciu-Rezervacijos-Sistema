@@ -17,6 +17,7 @@ class Hotel extends Model
         'communication',
         'animals',
         'agerestriction',
+        'address_id',
         'created_at',
         'updated_at'
     ];

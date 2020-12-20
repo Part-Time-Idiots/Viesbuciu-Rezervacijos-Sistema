@@ -36,7 +36,7 @@
 
                                 <div class="col-md-3">
                                 Aprašymas:<br>
-                                    <input type="text" id="desc" name="desc" size="500">
+                                    <input type="text" id="desc" name="desc" maxlength="500" size="200">
                                     <br>
                                 </div>
 

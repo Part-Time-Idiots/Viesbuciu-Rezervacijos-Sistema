@@ -12,7 +12,7 @@
                     <h2 class="text-center">Paieška</h2>
                 </div>
                 <div class="panel-body">
-                <form action="search" method="POST">
+                <form action="foundhotels" method="POST">
                     @csrf
                     <div class="col-md-3">
                     Ieškoti pagal:<br>
@@ -39,23 +39,6 @@
             </div>
         </div>
     </div>
-    <p></p>
-    <div class="grid grid-cols-1 md:grid-cols-2">
-            <table>
-            <?php
-                for ($x = 1; $x <= 3; $x++):?>
-                <tr>
-                    <div class="p-6">
-                
-                    <?php
-                        echo $x." Viešbučio informacija";
-                    ?>
-                        <a href="{{ url('/roominformation') }}" class="text-sm text-gray-700 underline">Pasirinkti viešbutį</a>
-                    </div>
-                </tr>
-            <?php endfor; ?>
-            </table>
-        </div>   
-    </div>         
+    <p></p>      
 </div>
 @endsection
