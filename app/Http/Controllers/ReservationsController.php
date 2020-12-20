@@ -30,7 +30,7 @@ class ReservationsController extends Controller
         $roomid = $_POST['roomid'];
         //print_r($req -> input());
         $rooms = DB::select('select * from rooms where id = "'.$roomid.'"');
-        return view('roominformation',['rooms'=>$rooms]);
+        return view('reservations/roominformation',['rooms'=>$rooms]);
     }
 
     public function createreservation(Request $req){
@@ -58,7 +58,7 @@ class ReservationsController extends Controller
         $room_id =$_POST['roomid'];
         $insert = DB::insert('insert into reservations (reservationsubmissiondate, reservationstart,reservationend,status, adultcount, childcount, breakfast, preferences, carplace, prepayment, user_id, room_id) values (NOW(), "'.$reservationstart.'","'.$reservationend.'","Rezervuota",'.$adultcount.','.$childcount.','.$breakfast.',"'.$preferences.'",'.$carplace.','.$prepayment.','.$user_id.','.$room_id.')');
         $message = "Kambarys sėkmingai rezervuotas";
-        return view('roominformation',['message'=>$message]);
+        return view('reservations/roominformation',['message'=>$message]);
     } 
     public function updateReservation(Request $req){
         $reservationid = $_POST['reservationid'];
