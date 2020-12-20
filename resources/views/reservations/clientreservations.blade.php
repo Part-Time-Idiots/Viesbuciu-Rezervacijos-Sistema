@@ -18,17 +18,19 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="ml-12">
                     <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
-                         Kliento rezervacijos
+                        <div class="card-header">Kliento rezervacijos</div>
                     </div>
                 </div>
                 @isset($deletemessage)
                 <?php echo $deletemessage; $deletemessage = "";?>
                 @endisset
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="card-body">
+                
                     <div class="grid grid-cols-1 md:grid-cols-2">
                     @isset($reservations)
                         <center><table border = "1">  
-                         <tr>
+                        <tr>
+                        <td>Viešbutis</td>
                         <td>Pradžia</td>
                         <td>Pabaiga</td>
                         <td>Statusas</td>
@@ -38,20 +40,21 @@
                        
                         @foreach ($reservations as $reservation)
                         <tr>
+                        <td>{{ $reservation->hotel }}</td>
                         <td>{{ $reservation->reservationstart }}</td>
                         <td>{{ $reservation->reservationend}}</td>
                         <td>{{ $reservation->status}}</td>
                         <td> 
                             <form action="editreservation" method="post">
                                 @csrf
-                                <input type="hidden" name="reservationid" value="{{$reservation->id}}">
+                                <input type="hidden" name="reservationid" value="{{$reservation->idr}}">
                                 <input type="submit" value="Redaguoti">
                             </form>
                         </td>
                         <td> 
                             <form action="deletereservation" method="post">
                                 @csrf
-                                <input type="hidden" name="reservationid" value="{{$reservation->id}}">
+                                <input type="hidden" name="reservationid" value="{{$reservation->idr}}">
                                 <input type="submit" value="Atšaukti">
                             </form>
                         </td>
@@ -60,7 +63,7 @@
                         
                         </table>
                         </center>
-                        @endisset
+                    @endisset
                         <!--<table>
                         <?php
                             for ($x = 1; $x <= 3; $x++):?>
@@ -83,6 +86,7 @@
                         <?php endfor; ?>
                         </table>-->
                     </div>
+                
                 </div>
             </div>
         </div>   

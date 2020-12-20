@@ -18,13 +18,13 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="ml-12">
                     <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
-                    Ieškoti kambarių
+                    <div class="card-header">Ieškoti kambarių</div>
                     </div>
                     
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                
+                    <div class="card-body">
                         <div class="p-6 right-0">
                             <div class="pabel-heading">
                                 <h2 class="text-center">Paieška</h2>
@@ -55,13 +55,14 @@
                             </div>   
                         </div>
                     </div>
+                    </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2">
                         @isset($rooms)
                         <center><table border = "1">  
                          <tr>
                         <td>Viešbutis</td>
-                        <td>Maksimalus žmonių kiekis</td>
+                        <td>Max. svečių kiekis</td>
                         </tr>
                        
                         @foreach ($rooms as $room)
@@ -72,7 +73,7 @@
                             <form action="roominformation" method="post">
                                 @csrf
                                 <input type="hidden" name="roomid" value="{{$room->id}}">
-                                <input type="submit" value="Pasirinkti">
+                                <input type="submit" value="Išsami kambario informacija">
                             </form>
                         </td>
                         </tr>
