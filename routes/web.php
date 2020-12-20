@@ -200,25 +200,20 @@ Route::get('/addReview', function () {
 //Viesbuciu posistemei
 Route::get('/hotels', [HotelController::class, 'index']);
 Route::get('/viewhotel/{id}', [HotelController::class, 'view']);
-Route::get('/edithotel/{id}', [HotelController::class, 'edit']);
+Route::get('/edithotel/{id}', [HotelController::class, 'editForm']);
+Route::post('/edithotel/{id}/edit', [HotelController::class, 'edit']);
 Route::get('/removehotel/{id}', [HotelController::class, 'remove']);
 Route::get('/hotelconfirmdel/{id}', [HotelController::class, 'askConfirm']);
 Route::get('/hotelconfirmcancel', [HotelController::class, 'confirmCancel']);
 Route::get('/createhotel', [HotelController::class, 'creationForm']);
 Route::post('/createhotel', [HotelController::class, 'create']);
+Route::get('/findhotel', [HotelController::class, 'find']);
+Route::post('/foundhotels', [HotelController::class, 'found']);
 
-Route::get('/findhotel', function () {
-    return view('hotel/find');
-});
-Route::get('/reports', function () {
-    return view('report/reports');
-});
-Route::get('/createreport', function () {
-    return view('report/create');
-});
-Route::get('/viewreport', function () {
-    return view('report/view');
-});
+Route::get('/reports', [HotelController::class, 'reportsIndex']);
+Route::get('/viewreport/{id}', [HotelController::class, 'reportsView']);
+Route::get('/createreport', [HotelController::class, 'reportForm']);
+Route::post('/createreport', [HotelController::class, 'createReport']);
 
 Route::get('/m_reservations', function () {
     return view('managerReservations/manreservations');

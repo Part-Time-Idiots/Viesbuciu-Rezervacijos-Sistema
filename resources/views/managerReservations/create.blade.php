@@ -21,71 +21,13 @@
                         <div class="p-6">
                         <div class="p-6 right-0">
                             <div class="pabel-heading">
-                                <h2 class="text-center">Rezervacijos kūrimo forma</h2>
+                                <h2 class="text-center">Kambario kūrimo forma</h2>
                             </div>
                             <div class="panel-body">
                             <form action="search" method="POST">
                                 @csrf
                                 
-                                <div class="col-md-3">
-                                Pateikimo data:<br>
-                                    <input type="date" min="2020-01-01" max="2021-01-01" placeholder="2020-01-01" name="rezervacijos pateikimo data">
-                                    <br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Rezervacijos pradžia:<br>
-                                    <input type="date" min="2020-01-01" max="2030-01-01" placeholder="2020-01-01" name="rezervacijos pradžia">
-                                    <br>
-                                </div>
                                 
-                                <div class="col-md-3">
-                                Rezervacijos pabaiga:<br>
-                                    <input type="date" min="2020-01-01" max="2031-01-01" placeholder="2020-01-14" name="rezervacijos pabaiga">
-                                    <br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Statusas:<br>
-                                    <input type="text" name="statusas">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Suaugusiųjų skaičius:<br>
-                                    <input type="number" name="suaugusiųjų skaičius">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Vaikų skaičius:<br>
-                                    <input type="number" name="vaikų skaičius">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Pageidavimai:<br>
-                                    <input type="text" name="pageidavimai">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Įskaičiuoti pusryčiai:<br>
-                                    <input type="checkbox" name="įskaičiuoti pusryčiai">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Yra vieta mašinai:<br>
-                                    <input type="checkbox" name="vieta mašinai">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Išanksto apmokėta:<br>
-                                    <input type="checkbox" name="išankstinis apmokėjimas">
-                                    <br><br>
-                                </div>
                                 
                                 <div class="col-md-3">
                                     <button class="btn btn-primary rounded" type="submit">Pridėti</button>

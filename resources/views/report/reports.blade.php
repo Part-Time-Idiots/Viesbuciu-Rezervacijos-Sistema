@@ -15,39 +15,41 @@
                     @endif
                 </div>
             @endif-->
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="ml-12">
-                    <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
-                        Ataskaitos
+            <center>
+                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                    <div class="ml-12">
+                        <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
+                            Ataskaitų sąrašas
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                        <a href="{{ url('/createreport') }}" class="btn btn-primary rounded" type="submit">Generuoti naują</a>
-                </div><p></p>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="col-md-3">
+                            <a href="{{ url('/createreport') }}" class="btn btn-primary rounded" type="submit">Registruoti naują</a>
+                    </div><p></p>
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                    <p></p>
-                        <table>
-                        <?php
-                            for ($x = 1; $x <= 3; $x++):?>
+                            <table border="3px solid black">
                             <tr>
-                                <div class="p-6">
-                            
-                                <?php
-                                    echo $x." Ataskaita";
-                                ?>
-                                 <!--<div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-                            -->
-                                    <p><a href="{{ url('/viewreport') }}" class="text-sm text-gray-700 underline">Pilna informacija</a></p>
-                                </div>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>Viešbučio ID</td>
+                                        <td>Data nuo</td>
+                                        <td>Data iki</td>
+                                    </tr>
                             </tr>
-                        <?php endfor; ?>
-                        </table>
+                            @foreach ($reports as $report)
+                                <tr>
+                                    <tr>
+                                    <td>{{ $report->id }}</td>
+                                    <td>{{ $report->hotel_id }}</td>
+                                    <td>{{ $report->datefrom }}</td>
+                                    <td>{{ $report->dateto}}</td>
+                                    <td><a href="{{ url('/viewreport/'.$report->id.'/') }}" class="text-sm text-gray-700 underline">Peržiurėti</a></td>
+                                    </tr>
+                                </tr>
+                                @endforeach
+                            </table>
+                            
                     </div>
                 </div>
-            </div>
+            </center>
         </div>   
 @endsection
