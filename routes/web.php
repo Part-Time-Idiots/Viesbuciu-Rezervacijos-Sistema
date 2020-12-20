@@ -101,7 +101,7 @@ Route::get('/user/reservations', [UserController::class, 'reservations'])->name(
 //Route::get('/clientreservations', function () {
  //   return view('reservations/clientreservations');
 //});
-Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations');
+Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations')->name('reservations.clientreservations');
 Route::get('/findreservation', function () {
     return view('reservations/findreservation');
 });
