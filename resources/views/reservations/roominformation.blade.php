@@ -25,7 +25,12 @@
                     <div class="mt-2 text-gray-700 dark:text-gray-400 text-sm" style="color:black;font-size:15px;">
                     @isset($rooms)
                     @foreach ($rooms as $room)
-                    Viešbutis: {{ $room->hotel }}<br> Aukštas: {{ $room->floor }}<br> Kambario privalumai: {{ $room->perks }}<br>
+                    Viešbutis: {{ $room->hotel }}<br> 
+                    Aukštas: {{ $room->floor }}<br> 
+                    Kambario nr.: {{ $room->roomnumber }}<br> 
+                    Maksimali klientų talpa: {{ $room->maxclient }}<br> 
+                    Kambario privalumai: {{ $room->perks }}<br>
+
                     @endforeach
                     @endisset
                     @isset($message)
@@ -73,16 +78,18 @@
                                     <input type="text" name="statusas">
                                     <br><br>
                                 </div>-->
-
+                                @isset($rooms)
+                                @foreach ($rooms as $room)
                                 <div class="col-md-3">
                                 Suaugusiųjų skaičius:<br>
-                                    <input type="number" min="1" max="2" placeholder="1" name="adultcount">
+                                    <input type="number" min="1" max="{{ $room->maxclient }}" placeholder="1" name="adultcount" value="1">
                                     <br><br>
                                 </div>
-
+                                @endforeach
+                                @endisset
                                 <div class="col-md-3">
                                 Vaikų skaičius:<br>
-                                    <input type="number" min="0" max="2" placeholder="0" name="childcount">
+                                    <input type="number" min="0" max="2" placeholder="0" name="childcount" value="0">
                                     <br><br>
                                 </div>
 

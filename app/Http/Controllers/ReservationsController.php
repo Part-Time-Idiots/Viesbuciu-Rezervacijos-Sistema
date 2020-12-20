@@ -65,6 +65,8 @@ class ReservationsController extends Controller
         //print_r($useremail);
 
         Mail::to($useremail)->send(new ReservationMail());
+        DB::insert('insert into notifications (message, user_id) values ("Rezervacija išsaugota", '.$user_id.')');
+
         return view('reservations/roominformation',['message'=>$message]);
     } 
     public function updateReservation(Request $req){
