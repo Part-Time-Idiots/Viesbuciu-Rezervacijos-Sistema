@@ -68,6 +68,12 @@
                                     <input type="number" name="age" value="{{ $hotel['agerestriction'] }}">
                                     <br><br>
                                 </div>
+
+                                <div class="col-md-3">
+                                Adreso ID:<br>
+                                    <input type="number" name="address" value="{{ $hotel['address_id'] }}">
+                                    <br><br>
+                                </div>
                                 
                                 <div class="col-md-3">
                                     <button class="btn btn-primary rounded" type="submit">Patvirtinti</button>

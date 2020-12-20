@@ -5,6 +5,7 @@ use App\Models\Hotel;
 use App\Models\Report;
 use App\Models\Address;
 use App\Models\Review;
+use App\Models\Room;
 use Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -44,6 +45,7 @@ class HotelController extends Controller
         $hotel->communication = $req->cont;
         $hotel->animals = $req->animals == "on" ? 1 : 0;
         $hotel->agerestriction = $req->age;
+        $hotel->address_id = $req->address;
 
         $hotel->save();
         return view('hotel.confirmation');
@@ -65,6 +67,7 @@ class HotelController extends Controller
         $hotel->communication = $req->cont;
         $hotel->animals = $req->animals == "on" ? 1 : 0;
         $hotel->agerestriction = $req->age;
+        $hotel->address_id = $req->address;
 
         $hotel->save();
 
@@ -162,11 +165,86 @@ class HotelController extends Controller
         $report->datefrom = $req->datefrom;
         $report->dateto = $req->dateto;
         $report->hotel_id = $hotel->id;
-        $report->text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nam libero justo laoreet sit amet cursus sit. Diam maecenas ultricies mi eget. Sed pulvinar proin gravida hendrerit lectus. Aliquam faucibus purus in massa tempor. Amet porttitor eget dolor morbi non. Integer vitae justo eget magna. Nunc congue nisi vitae suscipit. Sed viverra ipsum nunc aliquet bibendum. Nisl tincidunt eget nullam non. Tortor id aliquet lectus proin nibh. Pharetra convallis posuere morbi leo urna molestie at elementum.
-
-        Vel facilisis volutpat est velit egestas dui. Mauris augue neque gravida in. Purus viverra accumsan in nisl. Eu non diam phasellus vestibulum lorem. Vitae turpis massa sed elementum tempus egestas. Aliquam sem et tortor consequat id porta nibh. Sed id semper risus in hendrerit gravida rutrum. Et netus et malesuada fames. Diam maecenas ultricies mi eget mauris pharetra. Sit amet massa vitae tortor. Sodales ut eu sem integer vitae justo eget magna fermentum. In hac habitasse platea dictumst vestibulum. Massa placerat duis ultricies lacus sed turpis. Orci ac auctor augue mauris augue neque gravida. Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed.";
+        $report->text = "ATASKAITOS TEKSTAS";
+        
         $report->save();
         return view('report.confirmation');
     }
 
+    // ROOMS
+
+    public function roomIndex() 
+    {
+        $rooms = Room::all();
+        return view('room.rooms',['rooms'=>$rooms]);
+    }
+
+    public function viewRoom($id)
+    {
+        $room = Room::find($id);
+        return view('room.view',['room'=>$room]);
+    }
+
+    public function creationRoomForm()
+    {
+        return view('room.create');
+    }
+
+    public function createRoom(Request $req)
+    {
+        $room = new Room;
+        $hotel = Hotel::find($req->hid);
+        if($hotel != NULL) $room->hotel = $hotel->name;
+        else $room->hotel = "Viešbutis nerastas....";
+        $room->roomnumber = $req->num;
+        $room->floor = $req->floor;
+        $room->maxclient = $req->max;
+        if($room->perks != NULL) $room->perks = $req->perks;
+        else $room->perks = "-";
+        $room->hotel_id = $req->hid;
+
+        $room->save();
+        return view('room.confirmation');
+    }
+
+    public function editRoomForm($id)
+    {
+        $room = Room::find($id);
+        return view('room.edit',['room'=>$room, 'id'=>$id]);
+    }
+
+    public function editRoom($id, Request $req)
+    {
+        $room = Room::find($id);
+
+        $hotel = Hotel::find($req->hid);
+        if($hotel != NULL) $room->hotel = $hotel->name;
+        else $room->hotel = "Viešbutis nerastas....";
+        $room->roomnumber = $req->num;
+        $room->floor = $req->floor;
+        $room->maxclient = $req->max;
+        if($room->perks != NULL) $room->perks = $req->perks;
+        else $room->perks = "-";
+        $room->hotel_id = $req->hid;
+
+        $room->save();
+
+        return view('room.confirmation');
+    }
+
+    public function askConfirmRoom($id)
+    {
+        return view('room.confirm',['id'=>$id]);
+    }
+
+    public function confirmCancelRoom()
+    {
+        return view('room.confirmationCancel');
+    }
+
+    public function removeRoom($id)
+    {
+        Room::where('id', $id)->delete();
+        return view('room.confirmation');
+    }
 }

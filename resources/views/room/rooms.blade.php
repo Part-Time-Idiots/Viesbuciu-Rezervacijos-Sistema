@@ -19,37 +19,36 @@
                 <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                     <div class="ml-12">
                         <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
-                            Viešbučių sąrašas
+                            Kambarių sąrašas
                         </div>
                     </div>
                     <div class="col-md-3">
-                            <a href="{{ url('/createhotel') }}" class="btn btn-primary rounded" type="submit">Užregistruoti naują</a>
+                            <a href="{{ url('/createroom') }}" class="btn btn-primary rounded" type="submit">Pridėti naują</a>
                     </div><p></p>
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                            <table border="3px solid black">
+                        <table border="3px solid black">
                             <tr>
                                     <tr>
                                         <td>ID</td>
-                                        <td>Pavadinimas</td>
-                                        <td>Aprašymas</td>
-                                        <td>Susisiekimas</td>
+                                        <td>Viešbutis</td>
+                                        <td>Aukštas</td>
+                                        <td>Numeris</td>
                                     </tr>
                             </tr>
-                            @foreach ($hotels as $hotel)
+                            @foreach ($rooms as $room)
                                 <tr>
                                     <tr>
-                                    <td>{{ $hotel->id }}</td>
-                                    <td>{{ $hotel->name }}</td>
-                                    <td>{{ $hotel->description }}</td>
-                                    <td>{{ $hotel->communication}}</td>
-                                    <td><a href="{{ url('/viewhotel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Pilna informacija</a></td>
-                                    <td><a href="{{ url('/edithotel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Redaguoti</a></td>
-                                    <td><a href="{{ url('/hotelconfirmdel/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Pašalinti</a></td>
+                                    <td>{{ $room->id }}</td>
+                                    <td>{{ $room->hotel }}</td>
+                                    <td>{{ $room->floor }}</td>
+                                    <td>{{ $room->roomnumber }}</td>
+                                    <td><a href="{{ url('/viewroom/'.$room->id.'/') }}" class="text-sm text-gray-700 underline">Pilna informacija</a></td>
+                                    <td><a href="{{ url('/editroom/'.$room->id.'/') }}" class="text-sm text-gray-700 underline">Redaguoti</a></td>
+                                    <td><a href="{{ url('/roomconfirmdel/'.$room->id.'/') }}" class="text-sm text-gray-700 underline">Pašalinti</a></td>
                                     </tr>
                                 </tr>
-                                @endforeach
-                            </table>
-                            
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </center>

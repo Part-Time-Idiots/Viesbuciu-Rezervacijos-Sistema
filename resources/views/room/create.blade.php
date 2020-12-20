@@ -22,51 +22,39 @@
                         <div class="p-6">
                         <div class="p-6 right-0">
                             <div class="pabel-heading">
-                                <h2 class="text-center">Viešbučio registracijos forma</h2>
+                                <h2 class="text-center">Kambario registracijos forma</h2>
                             </div>
                             <div class="panel-body">
-                            <form action="createhotel" method="POST">
+                            <form action="createroom" method="POST">
                                 @csrf
                                 
                                 <div class="col-md-3">
-                                Pavadinimas:<br>
-                                    <input type="text" name="pav">
+                                Viešbučio id:<br>
+                                    <input type="number" name="hid">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Aprašymas:<br>
-                                    <input type="text" name="desc" maxlength="500" size="200">
+                                Kambario numeris:<br>
+                                    <input type="number" name="num">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Svetainė:<br>
-                                    <input type="text" name="web">
+                                Aukštas:<br>
+                                    <input type="number" name="floor">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Susisiekimas:<br>
-                                    <input type="tel" name="cont">
+                                Vietų skaičius:<br>
+                                    <input type="number" name="max">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Priema gyvūnus:<br>
-                                    <input type="checkbox" name="animals">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Amžiaus apribojimas:<br>
-                                    <input type="number" name="age">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Adreso ID:<br>
-                                    <input type="number" name="address">
+                                Privilegijos:<br>
+                                    <input type="text" name="perks" value="-">
                                     <br><br>
                                 </div>
                                 
@@ -76,7 +64,8 @@
                                             {{ __('Patvirtinti') }}
                                         </button>
                                     </div>
-                                </div>  
+                                </div> 
+
                             </form> 
                         </div> 
                     </div>

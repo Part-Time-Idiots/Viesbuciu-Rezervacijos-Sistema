@@ -28,7 +28,7 @@
                         <div class="p-6">
                         <center>
                         <div class="col-md-3">
-                            <a href="{{ url('/hotels') }}" class="btn btn-primary rounded" type="submit">Gryžti</a>
+                            <a href="{{ url('/rooms') }}" class="btn btn-primary rounded" type="submit">Gryžti</a>
                         </div><p></p>
                         </center>
                             <!--<div class="flex items-center">
