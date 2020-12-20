@@ -56,7 +56,6 @@
                                             <td>{{ $address->city }}, {{ $address->street }} {{ $address->number }}, {{ $address->country }}</td>
                                         @endif
                                     @endforeach
-                                    <td><a href="{{ url('/REIKIAPRIDETI/'.$hotel->id.'/') }}" class="text-sm text-gray-700 underline">Rezervuoti kambarį</a></td>
                                     </tr>
                                 </tr>
                             @endforeach                           
