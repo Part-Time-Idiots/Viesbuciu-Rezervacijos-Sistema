@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use App\Models\Report;
 use App\Models\Address;
+use App\Models\Review;
 use Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -20,6 +21,10 @@ class HotelController extends Controller
     public function view($id)
     {
         $hotel = Hotel::find($id);
+        $rating = Review::Where('hotel_id', $hotel->id)->pluck('rating')->avg();
+        if($rating != NULL) $hotel->rating = $rating; 
+        else $hotel->rating = 0; 
+        $hotel->save();
         
         return view('hotel.view',['hotel'=>$hotel]);
     }
@@ -94,6 +99,13 @@ class HotelController extends Controller
             $addresses = Address::where('city', 'LIKE' ,'%'.$req->searchterm.'%')->get();
             $hotels = Hotel::whereIn('address_id', $addresses->pluck('id'))->get();
 
+            foreach($hotels as $hotel)
+            {
+                $rating = Review::Where('hotel_id', $hotel->id)->pluck('rating')->avg();
+                if($rating != NULL) $hotel->rating = $rating; 
+                else $hotel->rating = 0; 
+                $hotel->save();
+            }
 
             if(count($hotels) > 0) return view('hotel.found',['hotels'=>$hotels, 'addresses'=>$addresses]);
             else return view('hotel.notfound');
@@ -101,7 +113,15 @@ class HotelController extends Controller
         else if($req->searchtype == "Šalis")
         {
             $addresses = Address::where('country', 'LIKE' ,'%'.$req->searchterm.'%')->get();
-            $hotels = Hotel::whereIn('address_id', $addresses->pluck('id'))->get();;
+            $hotels = Hotel::whereIn('address_id', $addresses->pluck('id'))->get();
+
+            foreach($hotels as $hotel)
+            {
+                $rating = Review::Where('hotel_id', $hotel->id)->pluck('rating')->avg();
+                if($rating != NULL) $hotel->rating = $rating; 
+                else $hotel->rating = 0; 
+                $hotel->save();
+            }
 
             if(count($hotels) > 0) return view('hotel.found',['hotels'=>$hotels, 'addresses'=>$addresses]);
             else return view('hotel.notfound');
