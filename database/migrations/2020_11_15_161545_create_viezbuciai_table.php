@@ -16,6 +16,12 @@ class CreateViezbuciaiTable extends Migration
         Schema::create('viezbuciai', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description');
+            $table->string('webSite');
+            $table->string('communication');
+            $table->double('rating');
+            $table->bool('acceptsPets');
+            $table->int('ageRestriction');
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ class CreateViezbuciaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('viezbuciai');
+        Schema::dropIfExists('hotels');
     }
 }
