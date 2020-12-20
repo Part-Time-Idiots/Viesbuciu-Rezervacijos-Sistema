@@ -46,7 +46,7 @@
                             {{ __('Redaguoti paskyrą') }}
                         </a>
 
-                        <a class="dropdown-item" href="{{ route('user.reservations') }}">
+                        <a class="dropdown-item" href="{{ route('reservations.clientreservations') }}">
                             {{ __('Peržiūrėti mano rezervacijas') }}
                         </a>
                         

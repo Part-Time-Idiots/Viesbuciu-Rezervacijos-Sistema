@@ -1,11 +1,11 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Mail\ReservationMail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\HotelController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +24,6 @@ Route::get('/', function () {
 Route::get('/main', function () {
     return view('main');
 });
-
 
 
 
@@ -102,7 +101,7 @@ Route::get('/user/reservations', [UserController::class, 'reservations'])->name(
 //Route::get('/clientreservations', function () {
  //   return view('reservations/clientreservations');
 //});
-Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations');
+Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations')->name('reservations.clientreservations');
 Route::get('/findreservation', function () {
     return view('reservations/findreservation');
 });
@@ -130,10 +129,10 @@ Route::post('search','App\Http\Controllers\ReservationsController@search');
 //retrieve data for searching reservations
 Route::get('view-results','ReservationsController@search');
 
-
-
-
-
+//Route::get('/email', function(){
+ //   Mail::to('email@gmail.com')->send(new ReservationMail());
+ //   return new ReservationMail();
+//});
 
 
 
