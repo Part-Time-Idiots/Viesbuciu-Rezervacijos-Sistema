@@ -58,6 +58,7 @@ Route::get('/main', function () {
 
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 //Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.profile');
 Route::get('/user', [UserController::class, 'index'])->name('user');
@@ -69,7 +70,6 @@ Route::post('/user/update', [UserController::class, 'update'])->name('user.updat
 Route::post('/user/profile/{id}', [UserController::class, 'deleteUser'])->name('user.delete');
 
 Route::get('/user/reservations', [UserController::class, 'reservations'])->name('user.reservations');
-
 
 
 

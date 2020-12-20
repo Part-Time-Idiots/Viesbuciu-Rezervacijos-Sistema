@@ -90,18 +90,11 @@ class UserController extends Controller
     public function deleteUser(Request $request)
     {
         $user = User::find(Auth::user()->id);
-        
         //DB::delete('delete from users where id = ?',[Auth::user()->id]);
-        
         Auth::logout();
         $user->delete();
         return view('index');
         //return Redirect::route('index')->with('global', 'Your account has been deleted!');
-        
-        
-        //$user->delete();
-        
-        //return view('index');
     }
 
     public function reservations()
