@@ -14,6 +14,7 @@
                     @endif
                 </div>
             @endif-->
+
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
@@ -24,54 +25,52 @@
                                 <h2 class="text-center">Viešbučio registracijos forma</h2>
                             </div>
                             <div class="panel-body">
-                            <form action="search" method="POST">
+                            <form action="createhotel" method="POST">
                                 @csrf
                                 
                                 <div class="col-md-3">
                                 Pavadinimas:<br>
-                                    <input type="text" name="pavadinimas">
+                                    <input type="text" id="pav" name="pav">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Aprašymas:<br>
-                                    <input type="text" name="aprašymas" size="50">
+                                    <input type="text" id="desc" name="desc" size="500">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Svetainė:<br>
-                                    <input type="text" name="svetainė">
+                                    <input type="text" id="web" name="web">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Susisiekimas:<br>
-                                    <input type="tel" name="susisiekimas">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Ivertinimas:<br>
-                                    <input type="number" name="įvertinimas">
+                                    <input type="tel" id="cont" name="cont">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Priema gyvūnus:<br>
-                                    <input type="checkbox" name="priema gyvūnus">
+                                    <input type="checkbox" id="animals" name="animals">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Amžiaus apribojimas:<br>
-                                    <input type="number" name="amžiaus apribojimas">
+                                    <input type="number" id="age" name="age">
                                     <br><br>
                                 </div>
                                 
-                                <div class="col-md-3">
-                                    <button class="btn btn-primary rounded" type="submit">Užregistruoti</button>
-                                </div>   
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Patvirtinti') }}
+                                        </button>
+                                    </div>
+                                </div>  
                             </form> 
                         </div> 
                     </div>

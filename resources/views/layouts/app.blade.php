@@ -22,7 +22,21 @@
 </head>
 <body>
     <div id="app">
-        @include('inc.navbar')
+        @guest
+            @include('inc.navbar')
+        @endguest
+
+        @if(Laratrust::hasRole('user'))
+            @include('inc.navbar')
+        @endif
+        
+        @if(Laratrust::hasRole('administrator'))
+            @include('inc.adminnavbar')
+        @endif
+
+        @if(Laratrust::hasRole('superadministrator'))
+            @include('inc.adminnavbar')
+        @endif
         
         <main class="py-4">
             @yield('content')
@@ -30,3 +44,7 @@
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+	document.title = `Viešbučių rezervacijos sistema`
+</script>

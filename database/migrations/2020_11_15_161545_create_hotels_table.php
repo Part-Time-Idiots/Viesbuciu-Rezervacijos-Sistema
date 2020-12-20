@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViezbuciaiTable extends Migration
+class CreateHotelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,11 +17,15 @@ class CreateViezbuciaiTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('webSite');
+            $table->string('web');
             $table->string('communication');
             $table->double('rating');
-            $table->bool('acceptsPets');
-            $table->int('ageRestriction');
+            $table->boolean('animals');
+            $table->integer('agerestriction');
+            $table->unsignedBigInteger('address_id');
+            //$table->foreign('address_id')->references('id')->on('addresses');
+            //$table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

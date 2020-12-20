@@ -24,7 +24,7 @@ class ReservationsController extends Controller
         //print_r($rooms);
         return view('reservations/findreservation',['rooms'=>$rooms]);
         //redirect()->back();
-    } 
+    }
 
     public function roomData(Request $req){
         $roomid = $_POST['roomid'];
@@ -59,7 +59,7 @@ class ReservationsController extends Controller
         $insert = DB::insert('insert into reservations (reservationsubmissiondate, reservationstart,reservationend,status, adultcount, childcount, breakfast, preferences, carplace, prepayment, user_id, room_id) values (NOW(), "'.$reservationstart.'","'.$reservationend.'","Rezervuota",'.$adultcount.','.$childcount.','.$breakfast.',"'.$preferences.'",'.$carplace.','.$prepayment.','.$user_id.','.$room_id.')');
         $message = "Kambarys sėkmingai rezervuotas";
         return view('reservations/roominformation',['message'=>$message]);
-    }
+    } 
     public function updateReservation(Request $req){
         $reservationid = $_POST['reservationid'];
         $reservationstart = $_POST['reservationstart'];

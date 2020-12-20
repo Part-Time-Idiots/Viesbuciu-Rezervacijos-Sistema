@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Validator;
+use DB;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:user|superadministrator');
+        $this->middleware('role:user|administrator|superadministrator');
     }
     
     public function index() 
@@ -84,6 +85,20 @@ class UserController extends Controller
     public function passwordUpdate()
     {
 
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        Auth:logout();
+
+        return Redirect::route('index')->with('global', 'Your account has been deleted!');
+        
+        //DB::delete('delete from users where id = ?',[$id]);
+        
+        //$user->delete();
+        
+        //return view('index');
     }
 
     public function reservations()
