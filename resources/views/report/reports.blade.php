@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                            <a href="{{ url('/createreport') }}" class="btn btn-primary rounded" type="submit">Registruoti naują</a>
+                            <a href="{{ url('/createreport') }}" class="btn btn-primary rounded" type="submit">Generuoti naują</a>
                     </div><p></p>
                     <div class="grid grid-cols-1 md:grid-cols-2">
                             <table border="3px solid black">
@@ -42,7 +42,7 @@
                                     <td>{{ $report->hotel_id }}</td>
                                     <td>{{ $report->datefrom }}</td>
                                     <td>{{ $report->dateto}}</td>
-                                    <td><a href="{{ url('/viewreport/'.$report->id.'/') }}" class="text-sm text-gray-700 underline">Peržiurėti</a></td>
+                                    <td><a href="{{ url('/viewreport/'.$report->id.'/') }}" class="text-sm text-gray-700 underline">Peržiūrėti</a></td>
                                     </tr>
                                 </tr>
                                 @endforeach
