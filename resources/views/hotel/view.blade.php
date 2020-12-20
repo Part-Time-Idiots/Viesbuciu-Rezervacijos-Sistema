@@ -52,7 +52,7 @@
                                         <td>{{ $hotel->rating}}</td>
                                         <td>{{ $hotel->animals }}</td>
                                         <td>{{ $hotel->agerestriction }}</td>
-                                        <td>{{ $hotel->adress_id }}</td>
+                                        <td>{{ $hotel->address_id }}</td>
                                         <td>{{ $hotel->user_id }}</td>
                                         <td>{{ $hotel->created_at }}</td>
                                         <td>{{ $hotel->updated_at }}</td>
