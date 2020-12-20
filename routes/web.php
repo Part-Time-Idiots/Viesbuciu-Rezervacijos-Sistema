@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Mail\ReservationMail;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\HotelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +50,6 @@ Route::get('/main', function () {
 
 
 
-
 //Vartotoju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 100 EILUTES !!!!!!!!!!!!!
 
  
@@ -57,6 +57,7 @@ Route::get('/main', function () {
 
 
 Auth::routes();
+Auth::routes(['verify' => true]);
 
 //Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.profile');
 Route::get('/user', [UserController::class, 'index'])->name('user');
@@ -64,11 +65,10 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/profile/{id}', [UserController::class, 'profile'])->name('user.profile');
 Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/edit', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/profile/{id}', [UserController::class, 'deleteUser'])->name('user.delete');
 
 Route::get('/user/reservations', [UserController::class, 'reservations'])->name('user.reservations');
-
-
 
 
 
@@ -198,25 +198,18 @@ Route::get('/addReview', function () {
 
 
 //Viesbuciu posistemei
-Route::get('/hotels', function () {
-    return view('hotel/hotels');
-});
-Route::get('/edithotel', function () {
-    return view('hotel/edit');
-});
-Route::get('/removehotel', function () {
-    return view('hotel/remove');
-});
-Route::get('/createhotel', function () {
-    return view('hotel/create');
-});
-Route::get('/viewhotel', function () {
-    return view('hotel/view');
-});
+Route::get('/hotels', [HotelController::class, 'index']);
+Route::get('/viewhotel/{id}', [HotelController::class, 'view']);
+Route::get('/edithotel/{id}', [HotelController::class, 'edit']);
+Route::get('/removehotel/{id}', [HotelController::class, 'remove']);
+Route::get('/hotelconfirmdel/{id}', [HotelController::class, 'askConfirm']);
+Route::get('/hotelconfirmcancel', [HotelController::class, 'confirmCancel']);
+Route::get('/createhotel', [HotelController::class, 'creationForm']);
+Route::post('/createhotel', [HotelController::class, 'create']);
+
 Route::get('/findhotel', function () {
     return view('hotel/find');
 });
-
 Route::get('/reports', function () {
     return view('report/reports');
 });

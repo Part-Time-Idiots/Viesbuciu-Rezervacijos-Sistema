@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Jūs sėkmingai prisijungėte!') }}
+                    {{ __('Jūs sėkmingai prisijungėte prie administratoriaus paskyros!') }}
                 </div>
             </div>
         </div>
