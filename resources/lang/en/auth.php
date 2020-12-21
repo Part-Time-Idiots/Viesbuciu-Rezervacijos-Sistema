@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
+    'failed' => 'Nerastas vartotojas su šais duomenimis.',
+    'password' => 'Pateiktas slaptažodis yra neteisingas.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

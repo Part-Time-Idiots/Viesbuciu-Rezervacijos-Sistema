@@ -14,7 +14,6 @@
                     @endif
                 </div>
             @endif-->
-
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
@@ -22,61 +21,45 @@
                         <div class="p-6">
                         <div class="p-6 right-0">
                             <div class="pabel-heading">
-                                <h2 class="text-center">Viešbučio registracijos forma</h2>
+                                <h2 class="text-center">Kambario redagavimo forma</h2>
                             </div>
                             <div class="panel-body">
-                            <form action="createhotel" method="POST">
+                            <form action="edit/{{ $room['id'] }}" method="POST">
                                 @csrf
-                                
+
                                 <div class="col-md-3">
-                                Pavadinimas:<br>
-                                    <input type="text" name="pav">
+                                Viešbučio id:<br>
+                                    <input type="number" name="hid" value="{{ $room['hotel_id'] }}">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Aprašymas:<br>
-                                    <input type="text" name="desc" maxlength="500" size="200">
+                                Kambario numeris:<br>
+                                    <input type="number" name="num" value="{{ $room['roomnumber'] }}">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Svetainė:<br>
-                                    <input type="text" name="web">
+                                Aukštas:<br>
+                                    <input type="number" name="floor" value="{{ $room['floor'] }}">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Susisiekimas:<br>
-                                    <input type="tel" name="cont">
+                                Vietų skaičius:<br>
+                                    <input type="number" name="max" value="{{ $room['maxclient'] }}">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
-                                Priema gyvūnus:<br>
-                                    <input type="checkbox" name="animals">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Amžiaus apribojimas:<br>
-                                    <input type="number" name="age">
-                                    <br><br>
-                                </div>
-
-                                <div class="col-md-3">
-                                Adreso ID:<br>
-                                    <input type="number" name="address">
+                                Privilegijos:<br>
+                                    <input type="text" name="perks" value="{{ $room['perks'] }}">
                                     <br><br>
                                 </div>
                                 
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Patvirtinti') }}
-                                        </button>
-                                    </div>
-                                </div>  
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary rounded" type="submit">Patvirtinti</button>
+                                </div>   
                             </form> 
                         </div> 
                     </div>

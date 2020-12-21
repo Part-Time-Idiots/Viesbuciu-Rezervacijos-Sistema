@@ -1,20 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <!--@if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endif
-                </div>
-            @endif-->
+<div class="container">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="card-body">
                 <div class="ml-12">
                     <div class="mt-2 text-gray-1000 dark:text-gray-400 text-sm" style="color:black;font-size:30px;">
                     Kambario informacija
@@ -24,13 +13,19 @@
                     <div class="mt-2 text-gray-700 dark:text-gray-400 text-sm" style="color:black;font-size:15px;">
                     @isset($rooms)
                     @foreach ($rooms as $room)
-                    Viešbutis: {{ $room->hotel }}<br> Aukštas: {{ $room->floor }}<br> Kambario privalumai: {{ $room->perks }}<br>
+                    Viešbutis: {{ $room->hotel }}<br> 
+                    Aukštas: {{ $room->floor }}<br> 
+                    Kambario nr.: {{ $room->roomnumber }}<br> 
+                    Maksimali klientų talpa: {{ $room->maxclient }}<br> 
+                    Kambario privalumai: {{ $room->perks }}<br>
+
                     @endforeach
                     @endisset
                     @isset($message)
                     <?php echo $message; ?>
                     @endisset
                     </div>
+                </div>
                 </div>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
@@ -71,16 +66,18 @@
                                     <input type="text" name="statusas">
                                     <br><br>
                                 </div>-->
-
+                                @isset($rooms)
+                                @foreach ($rooms as $room)
                                 <div class="col-md-3">
                                 Suaugusiųjų skaičius:<br>
-                                    <input type="number" min="1" max="2" placeholder="1" name="adultcount">
+                                    <input type="number" min="1" max="{{ $room->maxclient }}" placeholder="1" name="adultcount" value="1">
                                     <br><br>
                                 </div>
-
+                                @endforeach
+                                @endisset
                                 <div class="col-md-3">
                                 Vaikų skaičius:<br>
-                                    <input type="number" min="0" max="2" placeholder="0" name="childcount">
+                                    <input type="number" min="0" max="2" placeholder="0" name="childcount" value="0">
                                     <br><br>
                                 </div>
 
@@ -117,4 +114,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

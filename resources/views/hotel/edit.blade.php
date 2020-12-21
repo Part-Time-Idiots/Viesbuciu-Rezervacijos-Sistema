@@ -24,48 +24,54 @@
                                 <h2 class="text-center">Viešbučio redagavimo forma</h2>
                             </div>
                             <div class="panel-body">
-                            <form action="search" method="POST">
+                            <form action="{{ $hotel['id'] }}/edit" method="POST">
                                 @csrf
                                 
                                 <div class="col-md-3">
                                 Pavadinimas:<br>
-                                    <input type="text" name="pavadinimas">
+                                    <input type="text" name="pav" value="{{ $hotel['name'] }}">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Aprašymas:<br>
-                                    <input type="text" name="aprašymas" size="50">
+                                    <input type="text" name="desc" maxlength="500" size="200" value="{{ $hotel['description'] }}">
                                     <br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Svetainė:<br>
-                                    <input type="text" name="svetainė">
+                                    <input type="text" name="web" value="{{ $hotel['web'] }}">
                                     <br><br>
                                 </div>
 
                                 <div class="col-md-3">
                                 Susisiekimas:<br>
-                                    <input type="tel" name="susisiekimas">
+                                    <input type="tel" name="cont" value="{{ $hotel['communication'] }}">
                                     <br><br>
                                 </div>
-
-                                <div class="col-md-3">
-                                Ivertinimas:<br>
-                                    <input type="number" name="įvertinimas">
-                                    <br><br>
-                                </div>
-
+                                
                                 <div class="col-md-3">
                                 Priema gyvūnus:<br>
-                                    <input type="checkbox" name="priema gyvūnus">
+                                    @if ($hotel['animals'] == 1)
+                                    <input type="checkbox" name="animals" checked>
                                     <br><br>
+                                    @endif
+                                    @if ($hotel['animals'] == 0)
+                                    <input type="checkbox" name="animals">
+                                    <br><br>
+                                    @endif
                                 </div>
 
                                 <div class="col-md-3">
                                 Amžiaus apribojimas:<br>
-                                    <input type="number" name="amžiaus apribojimas">
+                                    <input type="number" name="age" value="{{ $hotel['agerestriction'] }}">
+                                    <br><br>
+                                </div>
+
+                                <div class="col-md-3">
+                                Adreso ID:<br>
+                                    <input type="number" name="address" value="{{ $hotel['address_id'] }}">
                                     <br><br>
                                 </div>
                                 

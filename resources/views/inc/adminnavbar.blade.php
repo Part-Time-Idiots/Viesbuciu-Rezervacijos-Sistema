@@ -54,8 +54,8 @@
                             {{ __('Viešbučio užimtumo ataskaita') }}
                           </a>
 
-                          <a class="dropdown-item" href="/m_reservations">
-                            {{ __('Viešbučio rezervacijos') }}
+                          <a class="dropdown-item" href="/rooms">
+                            {{ __('Kambariai') }}
                           </a>
 
                           <a class="dropdown-item" href="{{ route('logout') }}"

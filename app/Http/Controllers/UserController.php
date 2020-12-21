@@ -55,7 +55,10 @@ class UserController extends Controller
             
             if($validate) {
                 $user->name = $request['name'];
+                $user->surname = $request['surname'];
                 $user->email = $request['email'];
+                $user->birthday = $request['birthday'];
+                $user->personal_code = $request['personal_code'];
                 $user->save();
                 $request->session()->flash('success', 'Pakeitimai buvo sėkmingai išsaugoti');
                 return redirect()->back();
@@ -91,15 +94,11 @@ class UserController extends Controller
     public function deleteUser(Request $request)
     {
         $user = User::find(Auth::user()->id);
-        Auth:logout();
-
-        return Redirect::route('index')->with('global', 'Your account has been deleted!');
-        
-        //DB::delete('delete from users where id = ?',[$id]);
-        
-        //$user->delete();
-        
-        //return view('index');
+        //DB::delete('delete from users where id = ?',[Auth::user()->id]);
+        Auth::logout();
+        $user->delete();
+        return view('index');
+        //return Redirect::route('index')->with('global', 'Your account has been deleted!');
     }
 
     public function reservations()

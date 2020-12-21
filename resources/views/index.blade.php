@@ -8,7 +8,7 @@
                 <div class="card-header">Pagrindinis puslapis</div>
 
                 <div class="card-body">
-                    xoxo
+                    Viešbučių rezervacijos sistema
                 </div>
             </div>
         </div>
