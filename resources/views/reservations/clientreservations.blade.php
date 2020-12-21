@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 @isset($deletemessage)
-                <?php echo $deletemessage; $deletemessage = "";?>
+                <?php echo "<center><b>".$deletemessage."</b></center>"; $deletemessage = "";?>
                 @endisset
                 <div class="card-body">
                 
