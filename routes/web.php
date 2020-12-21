@@ -98,10 +98,17 @@ Route::get('/user/reservations', [UserController::class, 'reservations'])->name(
 
 
 //Rezervaciju posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 150 EILUTES !!!!!!!!!!!!!
+
+// Route::get('/clientreservations', function () {
+//    return view('reservations/clientreservations');
+// });
+//Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations');
+
 //Route::get('/clientreservations', function () {
  //   return view('reservations/clientreservations');
 //});
 Route::get('clientreservations','App\Http\Controllers\ReservationsController@findReservations')->name('reservations.clientreservations');
+
 Route::get('/findreservation', function () {
     return view('reservations/findreservation');
 });
@@ -148,27 +155,37 @@ Route::get('view-results','ReservationsController@search');
 
 
 //Atsiliepimu posistemei PO PAKEITIMU PATAISYTI KAD SEKANTI POSISTEME PRASIDETU NUO 200 EILUTES !!!!!!!!!!!!!
-Route::get('/review', function () {
-    return view('review');
-});
-Route::get('/hotelReview', function () {
-    return view('hotelReview');
-});
-Route::get('/usersReviews', function () {
-    return view('usersReviews');
-});
+// Route::get('/review', function () {
+//     return view('review');
+// });
+Route::get('hotelReview/{id}', 'App\Http\Controllers\ReviewsController@getHotelReviews');
+// Route::get('/hotelReview',function()
+// {
+//     return view()
+// });
+// Route::get('/usersReviews', function () {
+//     return view('usersReviews');
+// });
+Route::get('/usersReviews', 'App\Http\Controllers\ReviewsController@usersReviews');
 Route::get('/editReview', function () {
     return view('editReview');
 });
 Route::get('/commentReply', function () {
     return view('commentReply');
 });
-Route::get('/addReview', function () {
-    return view('addReview');
+Route::get('/addReview/{id}', function ($id) {
+    
+    return view('responses/addReview',['id'=>$id]);
 });
-
-
-
+Route::get('/addReview', function () {
+    
+    return view('responses/addReview');
+});
+Route::get('review','App\Http\Controllers\ReviewsController@showHotels');
+Route::post('addReview','App\Http\Controllers\ReviewsController@addReview');
+Route::post('deletereview','App\Http\Controllers\ReviewsController@deleteUsersReview');
+Route::post('editreview','App\Http\Controllers\ReviewsController@editReview');
+Route::post('updatereview','App\Http\Controllers\ReviewsController@updateReview');
 
 
 

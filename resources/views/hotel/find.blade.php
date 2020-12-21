@@ -26,7 +26,8 @@
                     </div>
                     <div class="col-md-3">
                         Terminas:<br>
-                        <input type="text" name="searchterm">
+                        <!-- <input type="text" name="searchterm"> -->
+                        <input type="text" name="town">
                         <br>
                     </div>
                     <p>
