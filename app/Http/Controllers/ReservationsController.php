@@ -10,6 +10,7 @@ use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReservationMail;
+use Validator;
 
 class ReservationsController extends Controller
 {
@@ -56,12 +57,13 @@ class ReservationsController extends Controller
         }else{
             $prepayment = "0";
         }
-        $user_id = "3";//User::find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
+        $user_id = $user ->id;
         $room_id =$_POST['roomid'];
         $insert = DB::insert('insert into reservations (reservationsubmissiondate, reservationstart,reservationend,status, adultcount, childcount, breakfast, preferences, carplace, prepayment, user_id, room_id) values (NOW(), "'.$reservationstart.'","'.$reservationend.'","Rezervuota",'.$adultcount.','.$childcount.','.$breakfast.',"'.$preferences.'",'.$carplace.','.$prepayment.','.$user_id.','.$room_id.')');
         $message = "Kambarys sėkmingai rezervuotas";
         //laiskas
-        $useremail = 'user@app.com';//User::find(Auth::user()->email);
+        $useremail = $user ->email;//User::find(Auth::user()->email);
         //print_r($useremail);
 
         Mail::to($useremail)->send(new ReservationMail());
@@ -112,14 +114,17 @@ class ReservationsController extends Controller
         DB::update('update reservations set status = "Atšaukta" where id = '.$reservationid.'');
         //DB::delete('delete from reservations where id = '.$reservationid.'');
         $deletemessage="Rezervacija numeriu ".$reservationid." atšaukta";//Rezervacija atšaukta";
-        $reservations = DB::select('select *, `reservations`.`id` AS idr from reservations INNER JOIN rooms ON `room_id` = `rooms`.`id` where user_id = "3"');
+        $user = User::find(Auth::user()->id);
+        $user_id = $user ->id;
+        $reservations = DB::select('select *, `reservations`.`id` AS idr from reservations INNER JOIN rooms ON `room_id` = `rooms`.`id` where user_id = "'.$user_id.'"');
         return view('reservations/clientreservations',['reservations'=>$reservations,'deletemessage'=>$deletemessage]);
     }
 
 
     public function findReservations(){
-
-        $reservations = DB::select('select *, `reservations`.`id` AS idr from reservations INNER JOIN rooms ON `room_id` = `rooms`.`id` where `reservations`.`user_id` = "3"');
+        $user = User::find(Auth::user()->id);
+        $user_id = $user ->id;
+        $reservations = DB::select('select *, `reservations`.`id` AS idr from reservations INNER JOIN rooms ON `room_id` = `rooms`.`id` where `reservations`.`user_id` = "'.$user_id.'"');
         return view('reservations/clientreservations',['reservations'=>$reservations]);
     }
 }
