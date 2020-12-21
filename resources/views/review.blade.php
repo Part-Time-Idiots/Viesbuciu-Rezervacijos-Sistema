@@ -11,7 +11,7 @@
                 </div>
                 <p><a style="color: inherit;" href="/usersReviews">Mano įvertinimai</a></p>
                 
-                <table class="table table-striped">
+                <!-- <table class="table table-striped">
                 <thead>
                 
                 <tr>
@@ -31,7 +31,7 @@
                     </tr>
                 </tbody>
 
-                </table>
+                </table> -->
 						
 				</div>
                     

@@ -6,9 +6,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div style="text-align: center;" class="card">
-                <div style="font-size:200%;" class="card-header">Pasirinkto viešbučio įvertinimai:</div>
-                <p><a style="color: inherit;" href="/addReview">Įvertinti viešbutį</a></p>
+                <div style="font-size:200%;" class="card-header"> {{$hotel[0]->name}} viešbučio įvertinimai:</div>
+                <p><a style="color: inherit;" href="/addReview?id={{$id}}">Įvertinti viešbutį</a></p>
+
+                @isset($message)
+                <p> {{$message}} </p>
+                @endisset
+                
+                @if(isset($reviews) && count($reviews) > 0)
                 <table class="table table-striped">
+                
                 <thead>
                 
                 <tr>
@@ -19,17 +26,24 @@
                 </thead>
 
                 <tbody>
+                @foreach ($reviews as $review)
                     <tr>
-                    <td>Petras</td>
-                    <td>8</td>
-                    <td>Butu gerai bet yra kur tobulet, daugiau 8 negaliu duot sorry hebra</td>
+                    <td>{{$review->name}}</td>
+                    <td>{{$review->rating}}</td>
+                    <td>{{$review->clientcomment}} </td>
                     <td><a style="color: inherit;" href="/commentReply">Atsakyti į komentarą</a></td>
                     </tr>
-                    
+                @endforeach    
                 </tbody>
 
                 </table>
-						
+                @else
+                <p> Šiuo metu viešbutis įvertinimų neturi</p>
+                
+                @endif
+
+                
+					
 				</div>
                     
                 </div>

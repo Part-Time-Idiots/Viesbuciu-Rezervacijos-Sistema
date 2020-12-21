@@ -5,12 +5,15 @@
 function myFunction() {
   confirm("Ar tikrai norite pašalinti įvertinimą?");
 }
+
+
 </script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div style="text-align: center;" class="card">
                 <div style="font-size:200%;" class="card-header">Jusu ivertinimai</div>
+                @isset($reviews)
                 <table class="table table-striped">
                 <thead>
                 
@@ -22,18 +25,29 @@ function myFunction() {
                 </thead>
 
                 <tbody>
+                @foreach ($reviews as $review)
                     <tr>
-                    <td>Nuostabuoji pilis</td>
-                    <td>8</td>
-                    <td>Nieko gero, bet sueina</td>
-                    <td><a style="color: inherit;" href="/editReview">Redaguoti įvertinimą</a></td>
-                    <td><a style="color: inherit;" href="/usersReviews" onclick="myFunction()">Šalinti įvertinimą</a></td>
+                    <td> {{$review->name}} </td>
+                    <td>{{$review->usersRating}} </td>
+                    <td>{{$review->clientcomment}} </td>
+                    <td>
+                    <form action="deletereview" method="post" onsubmit="return confirm('Ar tikrai norite pašalinti įvertinimą?');">
+                                @csrf
+                                <input type="hidden" name="reservationid" value="{{$review->reviewsId}}">
+                                <input type="submit" class="submitButton" value="Pašalinti">
+                            </form> </td>
+                            <td>
+                    <form action="editreview" method="post">
+                                @csrf
+                                <input type="hidden" name="reservationid" value="{{$review->reviewsId}}">
+                                <input type="submit" class="submitButton" value="Redaguoti">
+                            </form> </td>    
                     </tr>
-                    
+                @endforeach    
                 </tbody>
 
                 </table>
-						
+				@endisset		
 				</div>
                     
                 </div>

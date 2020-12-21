@@ -3,91 +3,77 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use DB;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
-use Validator;
 
-class UserController extends Controller
+class ReviewsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('role:user|superadministrator');
-    }
-    
-    public function index() 
-    {
-        return view('user.index');
-    }
+   public function showHotels(Request $req) {
 
-    public function edit()
-    {
-        if (Auth::user()) {
-            $user = User::find(Auth::user()->id);
-            if ($user) {
-                return view('user.edit')->withUser($user);
-            } else {
-                return redirect()->back();
-            }
-        } else {
-            return redirect()->back();
-        }
-    }
+        $hotels = DB::select('select id,name from hotels');
+        
+        return view('responses/review' ,['hotels'=>$hotels]);
 
-    public function update(Request $request)
-    {
-        //dd($request);
-        $user = User::find(Auth::user()->id);
-        if($user) {
-            $validate = null;
-            if(Auth::user()->email === $request['email']) {
-                $validate = $request->validate([
-                    'name' => 'required|min:2',
-                    'email' => 'required|email'
-                ]);
-            } else {
-                $validate = $request->validate([
-                    'name' => 'required|min:2',
-                    'email' => 'required|email|unique:users'
-                ]);
-            }
-            
-            if($validate) {
-                $user->name = $request['name'];
-                $user->email = $request['email'];
-                $user->save();
-                $request->session()->flash('success', 'Pakeitimai buvo sėkmingai išsaugoti');
-                return redirect()->back();
-            } else {
-                return redirect()->back();
-            }
-            
-        } else {
-            return redirect()->back();
-        }
-    }
+   }
+   public function getHotelReviews($id) {
+     // "'.$roomid.'"'
 
-    public function profile($id)
-    {
-        $user = User::find($id);
-        if($user) {
-            return view('user.profile')->withUser($user);
-        } else {
-            return redirect()->back();
-        }
-    }
+      $str = 'select * from reviews inner join users on users.id = reviews.user_id where hotel_id = '.$id.'';
+      $vies = 'select name from hotels where hotels.id = '.$id;
+      $reviews = DB::select($str);
+      $hotel = DB::select($vies);
+      
+      return view('responses/hotelReview',['reviews'=>$reviews,'id'=>$id,'hotel'=>$hotel]);
+   }
+   public function addReview(Request $req) {
 
-    public function passwordEdit()
-    {
+      $ivertis = $_POST['ivertinimas'];
+      $comment = $_POST['comment'];
+      $id = request('id', 1);
+      $user = User::find(Auth::user()->id);
+      $userID  = $user->id;
+      $str = 'insert into reviews (rating,clientcomment,hotelcomment,createdate,responsedate,hotel_id,user_id,hoteladmin_id) 
+      values ('.$ivertis.',"'.$comment.'",NULL,NOW(),NULL,'.$id.', '.$userID.',NULL)';
+      // $insert = DB::insert('insert into reviews (rating,clientcomment,hotelcomment,createdate,responsedate,hotel_id,user_id,hoteladmin_id) 
+      $insert = DB::insert($str);
+      // values ('.$ivertis.',"'.$comment.'",NULL,NOW(),NULL,'.$id.', '.$userID.',NULL)');
+      return redirect('hotelReview/'.$id);
+   }
+   public function usersReviews(Request $req) {
 
-    }
+      $user = User::find(Auth::user()->id);
+      $userID  = $user->id;
+      $str = 'select reviews.id AS reviewsId, name, reviews.rating AS usersRating, clientcomment from reviews inner join hotels on reviews.hotel_id = hotels.id where user_id='.$userID;
+      $reviews = DB::select($str);
+      return view('responses/usersReviews',['reviews'=>$reviews]);
+      
+   }
+   public function deleteUsersReview(Request $req) {
+            $id = $_POST['reservationid'];
+            $str = 'delete from reviews where id = '.$id;
+            $delete = DB::delete($str);
 
-    public function passwordUpdate()
-    {
+            return back()->withInput();
 
-    }
+      
+   }
+   public function editReview(Request $req) {
+      $id = $_POST['reservationid'];
+      $str = 'select hotels.name,reviews.id as reviewsID,reviews.rating,reviews.clientcomment from reviews inner join hotels on hotels.id = reviews.hotel_id where reviews.id = '.$id.'';
+      $reviews = DB::select($str);
+      return view('responses/editReview',['reviews'=>$reviews]);
+   }
+   public function updateReview(Request $req) {
+      $id = $_POST['reservationid'];
+      $rating = $_POST['ivertinimas'];
+      $comment = $_POST['comment'];
+      $str = 'update reviews set rating = '.$rating.', clientcomment = "'.$comment. '" where id = '.$id;
+      $update = DB::update($str);
+      return redirect('/usersReviews');
 
-    public function reservations()
-    {
-        return view('user.reservations');
-    }
+   }
 }

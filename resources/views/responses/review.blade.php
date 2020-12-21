@@ -10,7 +10,7 @@
                 
                 </div>
                 <p><a style="color: inherit;" href="/usersReviews">Mano įvertinimai</a></p>
-                
+                @isset($hotels)
                 <table class="table table-striped">
                 <thead>
                 
@@ -20,19 +20,22 @@
                 </thead>
 
                 <tbody>
+                @foreach ($hotels as $hotel)
                     <tr>
-                    <td scope="row"><a style="color: inherit;" href="/hotelReview">Nuostabusis viezbutis</a></td>
+                    <td scope="row"><a style="color: inherit;" href="/hotelReview/{{$hotel->id}}">{{$hotel->name}}</a></td>
                     
                     
                     </tr>
-                    <tr>
+                @endforeach
+                    <!-- <tr>
                     <td scope="row"><a style="color: inherit;" href="/hotelReview">Nuostabioji pilis</a></td>
                     
-                    </tr>
+                    </tr> -->
+                
                 </tbody>
 
                 </table>
-						
+				@endisset		
 				</div>
                     
                 </div>
